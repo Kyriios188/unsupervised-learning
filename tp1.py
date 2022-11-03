@@ -14,6 +14,7 @@ from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.metrics.pairwise import manhattan_distances
 from sklearn import cluster, metrics
 
+
 # Parser un fichier de donnces au format arff
 # data est un tableau d’exemples avec pour chacun
 # la liste des valeurs des features
@@ -28,9 +29,10 @@ from sklearn import cluster, metrics
 def arff_to_nparray(file_name: str) -> np.array:
     """Transforms an arff file into a np array of the coordinates"""
     path = './artificial/'
-    databrut = arff.loadarff(open(path+file_name, 'r'))
+    databrut = arff.loadarff(open(path + file_name, 'r'))
     data = [[x[0], x[1]] for x in databrut[0]]
     return np.array(data)
+
 
 def compute_kmeans_score(k: int, datanp) -> float:
     model = cluster.KMeans(n_clusters=k, init='k-means++')
@@ -39,13 +41,14 @@ def compute_kmeans_score(k: int, datanp) -> float:
     score: float = metrics.silhouette_score(X=datanp, labels=labels)
     return score
 
+
 def compute_kmedoids_score(k: int, datanp):
     distmatrix = euclidean_distances(datanp)
     fp = kmedoids.fasterpam(distmatrix, k)
     score: float = metrics.silhouette_score(X=datanp, labels=fp.labels)
     # score = kmedoids.silhouette(distmatrix, fp.labels)
     return score
-    
+
 
 # # Difficile à idientifier avec k-means
 # # zelnik3 (sourir)
@@ -63,7 +66,6 @@ def compute_kmedoids_score(k: int, datanp):
 # f0 = [f[0] for f in datanp]
 # f1 = [f[1] for f in datanp]
 
- 
 
 # # plt.scatter(f0, f1, s=8)
 # # plt.title('Donnees initiales ')
@@ -90,7 +92,6 @@ def compute_kmedoids_score(k: int, datanp):
 # plt.show()
 
 # print(f"nb_clusters={k}, nb_iter={iteration}, runtime={round((tps2 - tpsl)*1000,2)}ms")
-    
 
 
 # Easy files
@@ -102,11 +103,10 @@ data_files = {
 }
 # # Hard files
 data_hard_files = {
-     'zelnik3.arff': 3,
-     'target.arff': 6,
+    'zelnik3.arff': 3,
+    'target.arff': 6,
     'rings.arff': 3
 }
-
 
 # t1 = time.time()
 # for test in data_files.items():
@@ -167,24 +167,23 @@ for test in data_files.items():
     print(f"{compare2} pour {test[0]} (kmeans vs squared kmedoid)")
     print(f"{compare3} pour {test[0]} (kmedoid vs squared kmedoid)")
     # Results :
-        
+
     # Easy files
     # 0.9995560742469712 pour diamond9.arff
     # 1.0 pour xclara.arff
     # 1.0 pour twodiamonds.arff
     # 0.9998394078815763 pour s-set1.ar
-    
+
     # Hard files
     # 0.9742942261313662 pour zelnik3.arff
     # 0.8474659280901153 pour target.arff
     # 0.6723663663663664 pour rings.arff
-    
+
     # Les résultats des fichiers où les jeu de données sont bien séparés donnent
     # des résultats très similaires et ont des scores très proches de 1
     # Les jeux de données pas évident donnent des scores plus variables, qui descendent
     # jusqu'à 0.67.
-    
-    
+
     # Easy files
     # 0.9995560742469712 pour diamond9.arff (kmeans vs kmedoid)
     # 0.9997041235967544 pour diamond9.arff (kmeans vs squared kmedoid)
@@ -198,10 +197,9 @@ for test in data_files.items():
     # 0.9998394078815763 pour s-set1.arff (kmeans vs kmedoid)
     # 1.0 pour s-set1.arff (kmeans vs squared kmedoid)
     # 0.9998394078815763 pour s-set1.arff (kmedoid vs squared kmedoid)
-    
+
     # Tout est supérieur à 0.9995 donc on ne peut pas tirer de conclusion très intressante.
-    
-    
+
     # Hard files
     # 0.973670024116896 pour zelnik3.arff (kmeans vs kmedoid)
     # 0.9954887218045113 pour zelnik3.arff (kmeans vs squared kmedoid)
@@ -212,8 +210,3 @@ for test in data_files.items():
     # 0.693957957957958 pour rings.arff (kmeans vs kmedoid)
     # 0.5643343343343343 pour rings.arff (kmeans vs squared kmedoid)
     # 0.7290990990990991 pour rings.arff (kmedoid vs squared kmedoid)
-    
-
-    
-    
-    
