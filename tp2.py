@@ -17,7 +17,7 @@ import sys
 # Easy files
 data_files = {
     'zelnik3.arff': 3,
-    # 'target.arff': 6,
+    'target.arff': 6,
     'cuboids.arff': 3,
     # 'aggreg<ation.arff': 5,
     # '3-spiral>.arff': 3,
@@ -80,7 +80,7 @@ def compute_cah_score(datanp, labels) -> float:
     try:
         return metrics.calinski_harabasz_score(X=datanp, labels=labels)
     except ValueError:
-        return 99999
+        return -1
 
 
 # # Donnees dans datanp
@@ -93,7 +93,7 @@ for test in data_files.items():
 
     scores = []
     label_dict = {}
-    for i, dist in enumerate(np.linspace(0, 1, 5000)):
+    for i, dist in enumerate(np.linspace(0, 5, 5000)):
         tps1 = time.time()
         model = cluster.AgglomerativeClustering(
             distance_threshold=dist,
@@ -105,24 +105,12 @@ for test in data_files.items():
         labels = model.labels_
 
         score = compute_cah_score(datanp, labels)
-        # print(f"score={score}, i={i}, dist={dist}")
-
-        if 117 < score < 118 and test[0] == 'cuboids.arff':
-            plot_data(datanp, labels)
-            print(score)
-            print(dist)
-            sys.exit(0)
 
         scores.append(score)
         label_dict[i] = [labels, model.n_clusters_, round((tps2 - tps1) * 1000, 2), dist]
 
-    if test[0] == 'cuboids.arff':
-        print(scores)
-        sys.exit(0)
-
-
     # Davies-Bouldin -> minimize
-    i_max: int = scores.index(min(scores))
+    i_max: int = scores.index(max(scores))
 
     plot_data(datanp, label_dict[i_max][0])
 
