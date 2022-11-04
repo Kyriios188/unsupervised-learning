@@ -1,0 +1,6 @@
+for: zelnik3.arff, expected = 3, runtime = 2.0ms, min_samples = 1, score = 0.590894160268591
+for: cuboids.arff, expected = 3, runtime = 15.04ms, min_samples = 1, score = 0.6537819610394227
+for: aggregation.arff, expected = 5, runtime = 4.0ms, min_samples = 3, score = 0.9798261794466409
+for: 3-spiral.arff, expected = 3, runtime = 2.0ms, min_samples = 3, score = 0.9014939358466026
+for: cassini.arff, expected = 3, runtime = 9.99ms, min_samples = 348, score = 0.8207854546185906
+for: target.arff, expected = 6, runtime = 8.95ms, min_samples = 1, score = 1.0

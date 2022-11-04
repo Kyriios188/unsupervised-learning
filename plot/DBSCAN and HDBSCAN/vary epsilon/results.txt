@@ -1,0 +1,7 @@
+min_samples is fixed at 5, epsilon from 0.01 to 5 with 1000 samples
+for: zelnik3.arff, expected = 3, runtime = 2.0ms, epsilon = 0.028662887629209738, score = 1.0
+for: cuboids.arff, expected = 3, runtime = 5.97ms, epsilon = 0.07372457485828608, score = 1.0
+for: aggregation.arff, expected = 5, runtime = 4.0ms, epsilon = 0.01, score = 0.5377985000888331
+for: 3-spiral.arff, expected = 3, runtime = 2.0ms, epsilon = 0.01, score = 0.5756161854131238
+for: cassini.arff, expected = 3, runtime = 6.0ms, epsilon = 0.1645248416138713, score = 1.0
+for: target.arff, expected = 6, runtime = 5.0ms, epsilon = 0.22795931977325776, score = 0.9998119390805301

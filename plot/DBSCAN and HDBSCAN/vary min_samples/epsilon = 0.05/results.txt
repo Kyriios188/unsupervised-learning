@@ -1,0 +1,8 @@
+Every file except zelnik and cuboids had only one cluster
+
+for: zelnik3.arff, expected = 3, runtime = 2.0ms, min_samples = 1, score = 1.0
+for: cuboids.arff, expected = 3, runtime = 6.0ms, min_samples = 2, score = 0.9893841648110324
+for: aggregation.arff, expected = 5, runtime = 4.0ms, min_samples = 2, score = 0.5377985000888331
+for: 3-spiral.arff, expected = 3, runtime = 2.0ms, min_samples = 2, score = 0.5756161854131238
+for: cassini.arff, expected = 3, runtime = 4.0ms, min_samples = 8, score = 0.5994658950760746
+for: target.arff, expected = 6, runtime = 3.99ms, min_samples = 16, score = 0.6962701996380604

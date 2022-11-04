@@ -1,0 +1,6 @@
+for: zelnik3.arff, nb clusters = 7, runtime = 1.0ms, score = 0.7460824605013221
+for: cuboids.arff, nb clusters = 2, runtime = 11.0ms, score = 0.8499468445463028
+for: aggregation.arff, nb clusters = 3, runtime = 6.0ms, score = 0.9006459173012488
+for: 3-spiral.arff, nb clusters = 1, runtime = 1.97ms, score = 0.5756161854131238
+for: cassini.arff, nb clusters = 3, runtime = 10.0ms, score = 1.0
+for: target.arff, nb clusters = 9, runtime = 6.0ms, score = 0.8109111006823017

@@ -1,0 +1,7 @@
+Every plot had only one cluster
+
+for: zelnik3.arff, expected = 3, runtime = 0.97ms, min_samples = 11, score = 0.590894160268591
+for: cuboids.arff, expected = 3, runtime = 4.0ms, min_samples = 10, score = 0.6537819610394227
+for: aggregation.arff, expected = 5, runtime = 5.0ms, min_samples = 2, score = 0.5377985000888331
+for: 3-spiral.arff, expected = 3, runtime = 2.0ms, min_samples = 2, score = 0.5756161854131238
+for: cassini.arff, expected = 3, runtime = 4.0ms, min_samples = 4, score = 0.5994658950760746

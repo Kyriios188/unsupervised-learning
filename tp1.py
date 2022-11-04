@@ -34,6 +34,29 @@ def arff_to_nparray(file_name: str) -> np.array:
     return np.array(data)
 
 
+def chunks(xs, n):
+    """
+    We need to see the complete output to get the true label list result
+    """
+    n = max(1, n)
+    return (xs[i:i+n] for i in range(0, len(xs), n))
+
+
+def print_chunks(c):
+    for e in c:
+        print(e)
+
+
+def plot_data(datanp, labels=None):
+    f0 = [f[0] for f in datanp]
+    f1 = [f[1] for f in datanp]
+    if labels is not None:
+        plt.scatter(f0, f1, c=labels, s=8)
+    else:
+        plt.scatter(f0, f1, s=8)
+    plt.show()
+
+
 def compute_kmeans_score(k: int, datanp) -> float:
     model = cluster.KMeans(n_clusters=k, init='k-means++')
     model.fit(datanp)
@@ -151,6 +174,7 @@ for test in data_files.items():
     model = cluster.KMeans(n_clusters=k, init='k-means++')
     model.fit(datanp)
     labels_kmeans = model.labels_
+
     # kmedoids
     distmatrix = euclidean_distances(datanp)
     fp = kmedoids.fasterpam(distmatrix, k)

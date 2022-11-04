@@ -1,0 +1,7 @@
+epsilon at 0.5
+for: zelnik3.arff, expected = 3, runtime = 2.0ms, min_samples = 1, score = 0.590894160268591
+for: cuboids.arff, expected = 3, runtime = 9.97ms, min_samples = 620, score = 0.6628422002014753
+for: aggregation.arff, expected = 5, runtime = 4.0ms, min_samples = 5, score = 0.5377985000888331
+for: 3-spiral.arff, expected = 3, runtime = 1.0ms, min_samples = 9, score = 0.5756161854131238
+for: cassini.arff, expected = 3, runtime = 7.0ms, min_samples = 97, score = 0.8950631219988333
+for: target.arff, expected = 6, runtime = 7.0ms, min_samples = 1, score = 1.0

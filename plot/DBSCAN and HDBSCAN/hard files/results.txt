@@ -1,0 +1,5 @@
+on fait varier espilon de 0.01 à 5 avec 1000 échantillons et min_samples fixé à 5
+for: diamond9.arff, expected = 9, runtime = 15.03ms, epsilon = 0.12488488488488489, score = 0.976684944963526
+for: xclara.arff, expected = 3, runtime = 22.0ms, epsilon = 4.99001001001001, score = 0.985247125738528
+for: twodiamonds.arff, expected = 2, runtime = 4.0ms, epsilon = 0.1198898898898899, score = 0.9751844015914148
+for: s-set1.arff, expected = 15, runtime = 23.0ms, epsilon = 0.01, score = 0.25812548450928013
