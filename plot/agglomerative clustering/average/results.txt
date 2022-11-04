@@ -1,0 +1,8 @@
+Fowlkes-Mallows scoring en faisant varier la distance de 0 à 30 avec 5000 points
+Clustering Agglomératif AVERAGE LINKAGE
+for: zelnik3.arff, nb clusters = 7, expected = 3, runtime = 0.0ms, distance = 0.11402280456091217, score = 0.7460824605013221
+for: cuboids.arff, nb clusters = 2, expected = 3, runtime = 11.03ms, distance = 0.660132026405281, score = 0.8499468445463028
+for: aggregation.arff, nb clusters = 3, expected = 5, runtime = 6.0ms, distance = 14.91898379675935, score = 0.9006459173012488
+for: 3-spiral.arff, nb clusters = 1, expected = 3, runtime = 0.99ms, distance = 15.573114622924583, score = 0.5756161854131238
+for: cassini.arff, nb clusters = 3, expected = 3, runtime = 10.03ms, distance = 1.392278455691138, score = 1.0
+for: target.arff, nb clusters = 9, expected = 6, runtime = 5.0ms, distance = 1.5783156631326265, score = 0.8109111006823017
