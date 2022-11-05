@@ -1,0 +1,5 @@
+On pensait que alpha serait le epsilon de DBSCAN mais faire varier cette métrique n'a eu aucun effet.
+
+On essaye donc de faire varier min_samples et min_cluster_size maintenant
+
+Le dossier epsilon = 1.0 est donc un dossier min_cluster_size = 5 (valeur par défaut)

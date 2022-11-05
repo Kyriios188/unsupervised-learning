@@ -1,0 +1,11 @@
+Des erreurs mineures mais rien de très notable
+Prend toujours le epsilon le plus faible
+
+Faire varier epsilon est beaucoup mieux que faire varier min_samples
+
+for: zelnik3.arff, expected = 3, runtime = 3.0ms, epsilon = 0.0001, score = 1.0
+for: cuboids.arff, expected = 3, runtime = 11.0ms, epsilon = 0.0001, score = 1.0
+for: aggregation.arff, expected = 5, runtime = 15.0ms, epsilon = 0.0001, score = 1.0
+for: 3-spiral.arff, expected = 3, runtime = 4.01ms, epsilon = 0.0001, score = 0.9837562225587912
+for: cassini.arff, expected = 3, runtime = 12.0ms, epsilon = 0.0001, score = 0.9994455287320599
+for: target.arff, expected = 6, runtime = 10.0ms, epsilon = 0.0001, score = 0.9998119390805301

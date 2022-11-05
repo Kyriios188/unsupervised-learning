@@ -1,0 +1,9 @@
+HDBSCAN utilise un alpha au lieu d'un epsilon
+
+MAIS
+
+faire varier le alpha ne change rien (peut être le temps d'exécution) à la précision des résultats.
+
+J'ai forcé epsilon (alpha) à 0.0001, 0.1, 1, 2, 5, 100 et les résultats sont identiques.
+
+A l'inverse de DBSCAN, ici c'est faire varier min_samples qui a de l'impact

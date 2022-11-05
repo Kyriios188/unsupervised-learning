@@ -3,4 +3,4 @@ scipy
 kmedoids
 sklearn
 matplotlib
-pandas  # Allows displaying larger results
+hdbscan

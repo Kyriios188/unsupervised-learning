@@ -4,14 +4,10 @@ Created on Tue Oct  4 15:47:49 2022
 @author: fmurat
 """
 
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy.io import arff
-import time
+from utils import *
 
 import kmedoids
 from sklearn.metrics.pairwise import euclidean_distances
-from sklearn.metrics.pairwise import manhattan_distances
 from sklearn import cluster, metrics
 
 
@@ -26,51 +22,6 @@ from sklearn import cluster, metrics
 # Note : chaque exemple du jeu de donnees contient aussi um
 # numero de cluster. On retire cette information
 
-def arff_to_nparray(file_name: str) -> np.array:
-    """Transforms an arff file into a np array of the coordinates"""
-    path = './artificial/'
-    databrut = arff.loadarff(open(path + file_name, 'r'))
-    data = [[x[0], x[1]] for x in databrut[0]]
-    return np.array(data)
-
-
-def chunks(xs, n):
-    """
-    We need to see the complete output to get the true label list result
-    """
-    n = max(1, n)
-    return (xs[i:i+n] for i in range(0, len(xs), n))
-
-
-def print_chunks(c):
-    for e in c:
-        print(e)
-
-
-def plot_data(datanp, labels=None):
-    f0 = [f[0] for f in datanp]
-    f1 = [f[1] for f in datanp]
-    if labels is not None:
-        plt.scatter(f0, f1, c=labels, s=8)
-    else:
-        plt.scatter(f0, f1, s=8)
-    plt.show()
-
-
-def compute_kmeans_score(k: int, datanp) -> float:
-    model = cluster.KMeans(n_clusters=k, init='k-means++')
-    model.fit(datanp)
-    labels = model.labels_
-    score: float = metrics.silhouette_score(X=datanp, labels=labels)
-    return score
-
-
-def compute_kmedoids_score(k: int, datanp):
-    distmatrix = euclidean_distances(datanp)
-    fp = kmedoids.fasterpam(distmatrix, k)
-    score: float = metrics.silhouette_score(X=datanp, labels=fp.labels)
-    # score = kmedoids.silhouette(distmatrix, fp.labels)
-    return score
 
 
 # # Difficile à idientifier avec k-means
@@ -123,6 +74,12 @@ data_files = {
     'xclara.arff': 3,
     'twodiamonds.arff': 2,
     's-set1.arff': 15,
+    'zelnik3.arff': 3,
+    'cuboids.arff': 3,
+    'aggregation.arff': 5,
+    '3-spiral.arff': 3,
+    'cassini.arff': 3,
+    'target.arff': 6,  # samples are low density but on a line
 }
 # # Hard files
 data_hard_files = {

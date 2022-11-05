@@ -1,0 +1,10 @@
+EPSILON EST BLOQUÉ A 1.0
+
+for: zelnik3.arff, expected = 3, runtime = 4.0ms, min_samples = 2, score = 1.0
+for: cuboids.arff, expected = 3, runtime = 12.99ms, min_samples = 2, score = 1.0
+for: aggregation.arff, expected = 5, runtime = 10.96ms, min_samples = 1, score = 1.0
+for: 3-spiral.arff, expected = 3, runtime = 5.02ms, min_samples = 1, score = 1.0
+for: cassini.arff, expected = 3, runtime = 14.0ms, min_samples = 2, score = 1.0
+for: target.arff, expected = 6, runtime = 12.0ms, min_samples = 1, score = 1.0
+
+On va faire des tests avec tout à 1 et tout à 2 pui tout à 20

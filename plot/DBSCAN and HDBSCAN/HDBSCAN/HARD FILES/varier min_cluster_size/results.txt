@@ -1,0 +1,11 @@
+On a fait varier min_cluster_size après avoir fixé min_samples à la valeur trouvée précédemment.
+Prend des valeurs de  
+
+for: diamond9.arff, expected = 9, runtime = 32.01ms, min_cluster_size = 5, score = 0.9048278188426229
+for: xclara.arff, expected = 3, runtime = 34.03ms, min_cluster_size = 2, score = 0.9962085163439237
+for: twodiamonds.arff, expected = 2, runtime = 10.97ms, min_cluster_size = 2, score = 0.9912493086831842
+for: s-set1.arff, expected = 15, runtime = 49.03ms, min_cluster_size = 7, score = 0.9594730801054937
+
+On trouve des valeurs optimales de min_cluster_size
+2 à 999.
+

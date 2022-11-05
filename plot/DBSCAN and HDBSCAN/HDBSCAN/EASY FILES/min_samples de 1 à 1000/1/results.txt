@@ -1,0 +1,9 @@
+for: zelnik3.arff, expected = 3, runtime = 4.0ms, min_samples = 1, score = 0.6885920031885301
+for: cuboids.arff, expected = 3, runtime = 13.0ms, min_samples = 1, score = 0.5290446331368135
+for: aggregation.arff, expected = 5, runtime = 12.0ms, min_samples = 1, score = 1.0
+for: 3-spiral.arff, expected = 3, runtime = 3.96ms, min_samples = 1, score = 1.0
+for: cassini.arff, expected = 3, runtime = 15.0ms, min_samples = 1, score = 0.7558499799567088
+for: target.arff, expected = 6, runtime = 12.0ms, min_samples = 1, score = 0.9998119390805301
+
+Si les données ne sont pas très denses, il y a des erreurs !
+-> Sensibilité au bruit ?

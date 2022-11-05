@@ -1,0 +1,9 @@
+On fait varier min_samples avec epsilon = 1.0 pour trouver la meilleur valeur de min_samples
+pour chaque cluster
+
+for: diamond9.arff, expected = 9, runtime = 31.03ms, min_samples = 8, score = 0.9048278188426229
+for: xclara.arff, expected = 3, runtime = 34.04ms, min_samples = 30, score = 0.9962085163439237
+for: twodiamonds.arff, expected = 2, runtime = 8.03ms, min_samples = 8, score = 0.9912493086831842
+for: s-set1.arff, expected = 15, runtime = 49.99ms, min_samples = 16, score = 0.9471895738746122
+
+On sauvegarde ces résultats et on les utilise pour faire varier epsilon ensuite.
