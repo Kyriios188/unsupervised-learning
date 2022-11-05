@@ -137,7 +137,7 @@ for test in data_files.items():
     fp = kmedoids.fasterpam(distmatrix, k)
     labels_kmedoids = fp.labels
     # kmedoids squared
-    distmatrix = euclidean_distances(datanp, squared=(True))
+    distmatrix = euclidean_distances(datanp, squared=True)
     fp = kmedoids.fasterpam(distmatrix, k)
     labels_kmedoids_squared = fp.labels
     # compute the score
