@@ -11,63 +11,6 @@ from sklearn.metrics.pairwise import euclidean_distances
 from sklearn import cluster, metrics
 
 
-# Parser un fichier de donnces au format arff
-# data est un tableau d’exemples avec pour chacun
-# la liste des valeurs des features
-
-# Dans les jeux de donnees consideres
-# il y a 2 features (dimension 2)
-# [[-0.499261, -0.0612356],
-
-# Note : chaque exemple du jeu de donnees contient aussi um
-# numero de cluster. On retire cette information
-
-
-
-# # Difficile à idientifier avec k-means
-# # zelnik3 (sourir)
-
-# # Facile à identifier avec k-means
-# # xclara (3 boules)
-# # twodiamonds
-# # s-set1 (13 tâches)
-# datanp = arff_to_nparray('rings.arff')
-
-# # Affichage en 2D
-# # Extraire chaque valeur de features pour en faire une liste
-# # Ex pour f0 = [-0.499261, -1.51369, -1.60321,
-# # Ex pour fl = [-0.0612356, 0.265446, 0.362039,
-# f0 = [f[0] for f in datanp]
-# f1 = [f[1] for f in datanp]
-
-
-# # plt.scatter(f0, f1, s=8)
-# # plt.title('Donnees initiales ')
-# # plt.show()
-
-# # Les donnees sont dans datanp (2 dimensions)
-# # {0 : valeurs sur la premiere dimension
-# # {1 : valeur sur la deuxieme dimension
-
-# print ("Appel KMeans pour une valeur fixee de k ")
-# tpsl = time.time()
-
-# k = 16
-
-# model = cluster.KMeans(n_clusters=k, init='k-means++')
-# model.fit(datanp)
-
-# tps2 = time.time()
-# labels = model.labels_
-# iteration = model.n_iter_
-
-# plt.scatter(f0, f1, c=labels, s=8)
-# plt.title("Donnees apres clustering Kmeans")
-# plt.show()
-
-# print(f"nb_clusters={k}, nb_iter={iteration}, runtime={round((tps2 - tpsl)*1000,2)}ms")
-
-
 # Easy files
 data_files = {
     'diamond9.arff': 9,
@@ -88,23 +31,24 @@ data_hard_files = {
     'rings.arff': 3
 }
 
-# t1 = time.time()
-# for test in data_files.items():
-#     file: str = test[0]
-#     datanp = arff_to_nparray(file_name=file)
-#     scores = []
-#     for k in range(2, 21):
-#         # # KMEANS
-#         # score: float = compute_kmeans_score(k, datanp)
-#         # KMEDOIDS
-#         score: float = compute_kmedoids_score(k, datanp)
-#         scores.append(score)
-#         # the score at index 0 corresponds to k=1
-#         # so the score at index 5 corresponds to k=6
-#     t2 = time.time()
-#     print(scores)
-#     print(f"File={file}, EXPECTED={test[1]}, RESULT={scores.index(max(scores))+2}")
-#     print(f"runtime={round((t2 - t1)*1000,2)}ms")
+# On cherche le nombre optimal de clusters avec k-means et k-medoids
+t1 = time.time()
+for test in data_files.items():
+    file: str = test[0]
+    datanp = arff_to_nparray(file_name=file)
+    scores = []
+    for k in range(2, 21):
+        # # KMEANS
+        # score: float = compute_kmeans_score(k, datanp)
+        # KMEDOIDS
+        score: float = compute_kmedoids_score(k, datanp)
+        scores.append(score)
+        # the score at index 0 corresponds to k=1
+        # so the score at index 5 corresponds to k=6
+    t2 = time.time()
+    print(scores)
+    print(f"File={file}, EXPECTED={test[1]}, RESULT={scores.index(max(scores))+2}")
+    print(f"runtime={round((t2 - t1)*1000,2)}ms")
 
 # Easy files results
 # File=xclara.arff, EXPECTED=3, RESULT=3
@@ -122,6 +66,7 @@ data_hard_files = {
 # File=rings.arff, EXPECTED=3, RESULT=16
 # runtime=35578.67ms
 
+# On compare k-means, k-medoids et k-medoids squared en utilisant rand_score
 for test in data_files.items():
     file: str = test[0]
     datanp = arff_to_nparray(file_name=file)
