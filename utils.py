@@ -44,6 +44,17 @@ def arff_to_nparray(file_name: str) -> np.array:
     return np.array(data)
 
 
+def txt_to_nparray(file_name: str) -> np.array:
+    """Transforms an arff file into a np array of the coordinates"""
+    path = './dataset-rapport/'
+    databrut = open(path + file_name, 'r')
+    data = []
+    for line in databrut.readlines():
+        tab = line.strip().split(' ')
+        data.append([tab[0], tab[1]])
+    return np.array(data)
+
+
 def plot_data(datanp, labels=None):
     f0 = [f[0] for f in datanp]
     f1 = [f[1] for f in datanp]
@@ -93,6 +104,18 @@ def compute_fm_score(datanp, labels, name: str) -> float:
         return metrics.fowlkes_mallows_score(labels_true=labels_true[name], labels_pred=labels)
     except ValueError:
         return -1
+
+
+def compute_kmeans(k: int, datanp):
+    model = cluster.KMeans(n_clusters=k, init='k-means++')
+    model.fit(datanp)
+    return model.labels_
+
+
+def compute_kmedoids(k: int, datanp):
+    distmatrix = euclidean_distances(datanp)
+    fp = kmedoids.fasterpam(distmatrix, k)
+    return fp.labels
 
 
 def compute_kmeans_score(k: int, datanp) -> float:

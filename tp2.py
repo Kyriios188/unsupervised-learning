@@ -23,15 +23,17 @@ data_files = {
 }
 # # Hard files
 data_hard_files = {
-    'compound.arff': 6,
-    # 'chainlink.arff': 2
+    'diamond9.arff': 8,
+    'xclara.arff': 30,
+    'twodiamonds.arff': 8,
+    's-set1.arff': 16,
 }
 
 
 # WITH VARYING DISTANCES
 
 # Donnees dans datanp
-for test in data_files.items():
+for test in data_hard_files.items():
     file: str = test[0]
     datanp = arff_to_nparray(file_name=file)
     # plot_dendrogramme(datanp)
@@ -39,7 +41,7 @@ for test in data_files.items():
 
     scores = []
     label_dict = {}
-    for i, dist in enumerate(np.linspace(0, 30, 5000)):
+    for i, dist in enumerate(np.linspace(0, 30, 500)):
         tps1 = time.time()
         model = cluster.AgglomerativeClustering(
             distance_threshold=dist,

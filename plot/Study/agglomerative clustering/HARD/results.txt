@@ -1,0 +1,9 @@
+Variation de distance de 0 à 30 avec 500 points
+
+for: diamond9.arff, nb clusters = 9, expected = 8, runtime = 83.03ms, distance = 0.9619238476953907, score = 0.9973400574836698
+for: xclara.arff, nb clusters = 8, expected = 30, runtime = 96.0ms, distance = 29.939879759519037, score = 0.9901364902051244
+for: twodiamonds.arff, nb clusters = 2, expected = 8, runtime = 6.0ms, distance = 0.9619238476953907, score = 0.9974968750146851
+for: s-set1.arff, nb clusters = 4999, expected = 16, runtime = 332.96ms, distance = 23.567134268537075, score = 0.0010958662277263235
+
+
+332ms OULA
