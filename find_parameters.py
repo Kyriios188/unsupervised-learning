@@ -148,7 +148,7 @@ def print_optimal_dbsdcan_params():
 # for: zz2.txt, expected = 5, runtime = 4.01ms, epsilon = 1.0015015015015014, score = 738381.6820297515, min_samples = 1
 
 
-def print_optimal_agglo_params()
+def print_optimal_agglo_params():
     for test in mystery_data_files.items():
         file: str = test[0]
         datanp = txt_to_nparray(file_name=file)
@@ -156,10 +156,11 @@ def print_optimal_agglo_params()
         scores = []
         index = []
         label_dict = {}
-        for i, n_clusters in enumerate(range(2, 20)):
+        for i, n_clusters in enumerate(range(2, 5)):
+            tps1 = time.time()
             model = cluster.AgglomerativeClustering(
                 n_clusters=n_clusters,
-                linkage='single'
+                linkage='ward'
             )
             model = model.fit(datanp)
             tps2 = time.time()
@@ -169,12 +170,56 @@ def print_optimal_agglo_params()
 
             scores.append(score)
             label_dict[i] = [labels, n_clusters, score]
+            print(f"{1+i}/3")
 
         i_max: int = scores.index(max(scores))
 
         plot_data(datanp, label_dict[i_max][0])
 
         print(
-            f"for: {test[0]}, n_clusters = {label_dict[i_max][1]}, score = {label_dict[i_max][2]}, "
+            f"for: {test[0]}, n_clusters = {label_dict[i_max][1]}, score = {label_dict[i_max][2]}"
         )
 
+# single
+# for: x1.txt, n_clusters = 8, score = 2175.848843340553
+# for: x2.txt, n_clusters = 3, score = 3.9254868371961398
+# for: x3.txt, n_clusters = 5, score = 6.812769677688702
+# for: x4.txt, n_clusters = 14, score = 5.658242667940531
+# for: y1.txt, n_clusters = 2, score = 13.831673112783783
+# for: zz1.txt, n_clusters = 14, score = 12094.609211045776
+# for: zz2.txt, n_clusters = 2, score = 6436.146784901418
+
+# average
+# for: x1.txt, n_clusters = 15, score = 22293.326943729404
+# for: x2.txt, n_clusters = 15, score = 12485.468677511431
+# for: x3.txt, n_clusters = 8, score = 5443.651459654867
+# for: x4.txt, n_clusters = 4, score = 3790.0036443392955
+# for: zz1.txt, n_clusters = 8, score = 41680.98826111067
+# for: zz2.txt, n_clusters = 5, score = 9141.913591248727
+
+# complete
+# for: x1.txt, n_clusters = 15, score = 21326.854214249473
+# for: x2.txt, n_clusters = 15, score = 8284.529720702074
+# for: x3.txt, n_clusters = 10, score = 5010.089845791748
+# for: x4.txt, n_clusters = 3, score = 3701.5671960869026
+# for: zz1.txt, n_clusters = 10, score = 30643.856772304138
+# for: zz2.txt, n_clusters = 5, score = 8500.28467853752
+
+# ward
+# for: x1.txt, n_clusters = 15, score = 22326.222365483238
+# for: x2.txt, n_clusters = 15, score = 12378.992608119408
+# for: x3.txt, n_clusters = 15, score = 6891.117969959223
+# for: x4.txt, n_clusters = 17, score = 4895.177204945884
+# for: zz1.txt, n_clusters = 8, score = 41600.88678922423
+# for: zz2.txt, n_clusters = 5, score = 9091.42173689208
+
+
+# for: x1.txt, n_clusters = 15, score = 22326.222365483238, ward
+# for: x2.txt, n_clusters = 15, score = 12485.468677511431, average
+# for: x3.txt, n_clusters = 15, score = 6891.117969959223, ward
+# for: x4.txt, n_clusters = 17, score = 4895.177204945884, ward
+# for: y1.txt, n_clusters = 2, score = 13.831673112783783, single
+# for: zz1.txt, n_clusters = 8, score = 41680.98826111067, average
+# for: zz2.txt, n_clusters = 5, score = 9141.913591248727, average
+
+print_optimal_agglo_params()
